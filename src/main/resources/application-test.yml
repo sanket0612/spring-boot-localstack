@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: local-sqs
+
+localstack:
+  host: localhost
+
+cloud:
+  aws:
+    credentials:
+      access-key: some-access-key
+      secret-key: some-secret-key
+    sqs:
+      incoming-queue:
+        url: http://localhost:4576/queue/incoming-queue
+        name: incoming-queue
+      outgoing-queue:
+        name: outgoing-queue
+        url: http://localhost:4576/queue/outgoing-queue
+    stack:
+      auto: false
+    region:
+      static: eu-central-1
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
